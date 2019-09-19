@@ -19,8 +19,7 @@ export async function login({email, password}) {
         await store.dispatch('setUsername', currentUser.displayName);
         router.push('/');
     } catch (error) {
-        console.log(error);
-        throw error;
+        return error;
     }
 }
 
@@ -48,7 +47,7 @@ export async function register(form) {
         );
     } catch (error) {
         console.log(error);
-        throw error;
+        return error;
     }
 }
 
@@ -57,6 +56,6 @@ export async function logout() {
         await firebase.auth().signOut();
         router.push('/login');
     } catch (error) {
-        throw error;
+        return error;
     }
 }

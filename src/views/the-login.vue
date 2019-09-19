@@ -1,6 +1,9 @@
 <template>
     <v-app>
         <header class="app-title text-center">
+            <v-alert v-show="alert" class="alert" type="error">
+                Credentials are wrong!
+            </v-alert>
             <h3>Log in</h3>
             <v-divider></v-divider>
         </header>
@@ -23,7 +26,7 @@
                         label="password"
                         placeholder="password"
                         type="password"
-                        :counter="6"
+                        :counter="8"
                         solo
                 ></v-text-field>
                 <div class="auth-link text-right">
@@ -61,23 +64,34 @@
                 ],
                 passwordValidation: [
                     v => !!v || 'Password is required',
-                    v => v.length <= 6 || 'Password is too short'
+                    v => v.length >= 8 || 'Password is too short'
                 ],
-                loading: false
+                loading: false,
+                alert: false
             }
         },
         methods: {
             async submit() {
                 this.loading = true;
-                await login(this.form);
+                const response = await login(this.form);
                 this.loading = false;
-
+                this.alert = true;
+                if (response) {
+                    setTimeout(() => {
+                        this.alert = false;
+                    }, 3000);
+                }
             },
         },
 
     }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+    .alert {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+    }
 </style>

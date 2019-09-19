@@ -39,7 +39,7 @@
                         label="password"
                         placeholder="password"
                         type="password"
-                        :counter="6"
+                        :counter="8"
                         solo
                 ></v-text-field>
                 <div class="auth-link text-right">
@@ -81,7 +81,7 @@
                 ],
                 passwordValidation: [
                     v => !!v || 'Password is required',
-                    v => v.length <= 6 || 'Password is too short'
+                    v => v.length >= 8 || 'Password is too short'
                 ],
                 required: [
                     v => !!v || 'Field is required',
