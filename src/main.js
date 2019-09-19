@@ -3,9 +3,13 @@ import App from './App.vue';
 import '@ionic/core/css/core.css';
 import '@ionic/core/css/ionic.bundle.css';
 
-import IonicVue from '@ionic/vue';
+import firebase from "./plugins/firebase";
+import vuetify from './plugins/vuetify';
+import '@babel/polyfill'
+import 'roboto-fontface/css/roboto/roboto-fontface.css'
+import '@mdi/font/css/materialdesignicons.css'
 
-Vue.use(IonicVue);
+import store from './store/store'
 
 Vue.config.productionTip = false;
 
