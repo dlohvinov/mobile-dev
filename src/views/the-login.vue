@@ -26,7 +26,6 @@
                         label="password"
                         placeholder="password"
                         type="password"
-                        :counter="8"
                         solo
                 ></v-text-field>
                 <div class="auth-link text-right">

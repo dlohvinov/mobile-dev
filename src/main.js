@@ -1,7 +1,6 @@
 import Vue from 'vue';
-import App from './App.vue';
-import '@ionic/core/css/core.css';
-import '@ionic/core/css/ionic.bundle.css';
+import App from './the-app.vue';
+import router from "./router";
 
 import firebase from "./plugins/firebase";
 import vuetify from './plugins/vuetify';
@@ -14,5 +13,8 @@ import store from './store/store'
 Vue.config.productionTip = false;
 
 new Vue({
+  router,
+  vuetify,
+  store,
   render : (h) => h(App)
 }).$mount('#app');

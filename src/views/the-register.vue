@@ -7,7 +7,7 @@
 
         <section class="auth">
             <v-form class="auth-form" v-model="validation" @submit="submit">
-                <v-subheader class="subtitle-1">Enter your credentials beloww:</v-subheader>
+                <v-subheader class="subtitle-1">Enter your credentials below:</v-subheader>
                 <v-text-field
                         class="login-form__input"
                         v-model="form.email"
@@ -39,7 +39,6 @@
                         label="password"
                         placeholder="password"
                         type="password"
-                        :counter="8"
                         solo
                 ></v-text-field>
                 <div class="auth-link text-right">
@@ -77,7 +76,7 @@
                 ],
                 phoneValidation: [
                     v => !!v || 'Phone is required',
-                    // v => /^((\+380)+([0-9]){9})$/.test(v) || 'Phone must be valid',
+                    v => /^((\+380)+([0-9]){9})$/.test(v) || 'Phone must be valid',
                 ],
                 passwordValidation: [
                     v => !!v || 'Password is required',
