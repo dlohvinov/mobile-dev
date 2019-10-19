@@ -2,7 +2,7 @@
     <v-card class="mail pa-2 text--white">
         <div class="d-flex flex-no-wrap">
             <div  class="mail__img-wrap">
-                <v-img class="mail__img" :src="require('../assets/logo.png')"></v-img>
+                <v-img class="mail__img" :src="mail.img"></v-img>
             </div>
             <div>
                 <v-card-title class="headline py-0">
@@ -36,5 +36,9 @@
         height: 100px;
         padding: 5px;
         border: 1px dashed #0d47a1;
+
+        .mail__img {
+            vertical-align: center;
+        }
     }
 </style>
