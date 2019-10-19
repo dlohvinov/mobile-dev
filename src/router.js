@@ -32,15 +32,17 @@ const router = new Router({
     ]
 });
 
-router.beforeEach((to, from, next) => {
-    const currentUser = firebase.auth().currentUser;
+router.beforeEach(async  (to, from, next) => {
     const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+    firebase.auth().onAuthStateChanged((currentUser) => {
+        console.log(currentUser);
+        if (!currentUser && requiresAuth) {
+            next('/login');
+        } else {
+            next();
+        }
+    });
 
-    if (!currentUser && requiresAuth) {
-        next('/login');
-    } else {
-        next();
-    }
 });
 
 export default router;

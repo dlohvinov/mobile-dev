@@ -4,11 +4,11 @@ import store from "../store/store";
 import {eventBus} from '../eventBus';
 
 export async function getSession() {
-    console.log('getSession started');
-    const currentUser = await firebase.auth().currentUser;
-    // if (!currentUser && router.fullPath !== '/login') {
-    //     router.push('/login');
-    // }
+    firebase.auth().onAuthStateChanged((currentUser) => {
+        if (!currentUser && router.fullPath !== '/login') {
+            router.push('/login');
+        }
+    });
 }
 
 export async function login({email, password}) {
