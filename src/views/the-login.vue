@@ -1,9 +1,6 @@
 <template>
     <v-app>
         <header class="app-title text-center">
-            <v-alert v-show="alert" class="alert" type="error">
-                Credentials are wrong!
-            </v-alert>
             <h3>Log in</h3>
             <v-divider></v-divider>
         </header>
@@ -66,7 +63,6 @@
                     v => v.length >= 8 || 'Password is too short'
                 ],
                 loading: false,
-                alert: false
             }
         },
         methods: {
@@ -74,12 +70,6 @@
                 this.loading = true;
                 const response = await login(this.form);
                 this.loading = false;
-                this.alert = true;
-                if (response) {
-                    setTimeout(() => {
-                        this.alert = false;
-                    }, 3000);
-                }
             },
         },
 

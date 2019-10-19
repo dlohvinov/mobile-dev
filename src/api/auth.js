@@ -1,13 +1,14 @@
 import firebase from 'firebase';
 import router from '../router';
 import store from "../store/store";
+import {eventBus} from '../eventBus';
 
 export async function getSession() {
     console.log('getSession started');
     const currentUser = await firebase.auth().currentUser;
-    if (!currentUser && this.$route.path !== '/login') {
-        router.push('/login');
-    }
+    // if (!currentUser && router.fullPath !== '/login') {
+    //     router.push('/login');
+    // }
 }
 
 export async function login({email, password}) {
@@ -19,7 +20,7 @@ export async function login({email, password}) {
         await store.dispatch('setUsername', currentUser.displayName);
         router.push('/');
     } catch (error) {
-        return error;
+        eventBus.$emit('snack', 'Credentials are wrong!');
     }
 }
 
@@ -45,9 +46,9 @@ export async function register(form) {
                 router.push('/');
             }
         );
-    } catch (error) {
-        console.log(error);
-        return error;
+    } catch (err) {
+        console.log(err);
+        eventBus.$emit('snack', err.message);
     }
 }
 
