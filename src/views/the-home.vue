@@ -33,7 +33,7 @@
 <script>
     import pullTo from 'vue-pull-to';
     import mailItem from '../components/mail-item';
-    import {getMailList} from "../api/mail";
+    import {getMailList} from '../api/mail';
 
     const pullConfig = {
         pullText: 'Load', // The text is displayed when you pull down
@@ -44,7 +44,7 @@
     };
 
     export default {
-        name: "the-home",
+        name: 'the-home',
         components: {
             'mail-item': mailItem,
             'pull-to': pullTo,
@@ -68,7 +68,6 @@
                     this.mailList = await getMailList();
                     loaded('done');
                 } catch (err) {
-
                     loaded('fail');
                 }
                 finally {

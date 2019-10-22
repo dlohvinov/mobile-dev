@@ -41,34 +41,26 @@
 </template>
 
 <script>
-    import {login} from "../api/auth";
-    import backButtonClose from "../mixins/backButtonClose";
+    import {login} from '../api/auth';
+    import backButtonClose from '../mixins/backButtonClose';
+    import validatorsMixin from '../mixins/validatorsMixin';
 
     export default {
-        name: "the-login",
-        mixins: [backButtonClose],
+        name: 'the-login',
+        mixins: [validatorsMixin, backButtonClose],
         data() {
             return {
                 form: {
                     email: null,
                     password: null
                 },
-                validation: false,
-                emailValidation: [
-                    v => !!v || 'E-mail is required',
-                    v => /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(v) || 'E-mail must be valid',
-                ],
-                passwordValidation: [
-                    v => !!v || 'Password is required',
-                    v => v.length >= 8 || 'Password is too short'
-                ],
                 loading: false,
             }
         },
         methods: {
             async submit() {
                 this.loading = true;
-                const response = await login(this.form);
+                await login(this.form.email, this.form.password);
                 this.loading = false;
             },
         },

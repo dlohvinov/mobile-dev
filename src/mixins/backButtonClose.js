@@ -9,7 +9,7 @@ export default {
 
     methods: {
         backClose() {
-            document.addEventListener("backbutton", function (e) {
+            document.addEventListener("backbutton",  (e) => {
                 e.preventDefault();
                 navigator.app.exitApp();
             }, false);

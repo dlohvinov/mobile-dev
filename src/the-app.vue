@@ -19,7 +19,7 @@
 </template>
 
 <script>
-    import {getSession} from "./api/auth";
+    import {getSession} from './api/auth';
     import theLogin from './views/the-register';
     import {eventBus} from './eventBus';
 
@@ -39,11 +39,10 @@
         mounted() {
             getSession();
 
-
             window.addEventListener('offline', () => {
                 this.showSnack('You`re now offiine!');
-                // eventBus.$emit('snack', 'Internet connection lost!');
             });
+
             window.addEventListener('online', () => {
                 this.showSnack('You`re now online!');
             });
