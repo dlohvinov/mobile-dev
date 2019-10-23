@@ -8,8 +8,8 @@
                 indeterminate
         ></v-progress-circular>
         <pull-to
-                :top-load-method="loadMailList"
-            :top-config="pullConfig"
+                :ops="pullConfig"
+                @refresh-start="loadMailList"
         >
             <header class="app-title text-center">
                 <h3>Mail list</h3>
@@ -31,16 +31,20 @@
 </template>
 
 <script>
-    import pullTo from 'vue-pull-to';
+    import pullTo from 'vuescroll';
     import mailItem from '../components/mail-item';
     import {getMailList} from '../api/mail';
 
     const pullConfig = {
-        pullText: 'Load', // The text is displayed when you pull down
-        triggerText: 'Load..', // The text that appears when the trigger distance is pulled down
-        loadingText: 'Loading...', // The text in the load
-        doneText: 'Loaded', // Load the finished text
-        failText: 'Not loaded', // Load failed text
+        vuescroll: {
+            mode: 'slide',
+            pullRefresh: {
+                enable: true
+            },
+            scroller: {
+                preventDefaultOnMove: false
+            }
+        }
     };
 
     export default {
@@ -62,15 +66,11 @@
         },
 
         methods: {
-            async loadMailList(loaded) {
+            async loadMailList() {
                 this.loading = true;
                 try {
                     this.mailList = await getMailList();
-                    loaded('done');
-                } catch (err) {
-                    loaded('fail');
-                }
-                finally {
+                } finally {
                     this.loading = false;
                 }
             }
