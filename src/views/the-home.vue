@@ -12,7 +12,7 @@
                 <v-icon>mdi-view-list</v-icon>
             </v-btn>
 
-            <v-btn to="/">
+            <v-btn to="/unknown">
                 <span>Favorites</span>
                 <v-icon>mdi-heart</v-icon>
             </v-btn>
@@ -26,25 +26,15 @@
 </template>
 
 <script>
-    // import MailList from './the-mail-list';
-
     export default {
         name: 'the-home',
-        components: {
-            // MailList
-        },
         data() {
-            return {
-                activeBtn: 1,
-            }
+          return {
+              activeBtn: 1,
+          }
         },
-
-        mounted() {
-
-        },
-
-        methods: {
-
+        created() {
+            this.$router.push('/unknown');
         }
     }
 </script>
