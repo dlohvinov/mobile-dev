@@ -11,4 +11,14 @@ export const getMailList = async () => {
     } catch (err) {
         eventBus.$emit('snack', 'Sorry, cant load mails :(');
     }
-}
+};
+
+export const getMail = async (id) => {
+    const url = BASE_URL + '/mail/' + id;
+    try {
+        const response = await axios.get(url);
+        return response.data;
+    } catch (err) {
+        eventBus.$emit('snack', 'Sorry, cant load mail :(');
+    }
+};

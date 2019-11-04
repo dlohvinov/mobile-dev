@@ -8,6 +8,17 @@ section {
     padding: 0 20px;
 }
 
+.pic__img-wrap {
+    width: 320px;
+    height: 320px;
+    padding: 5px;
+    margin: auto;
+    border: 1px dashed #0d47a1;
+
+    .pic__img {
+        vertical-align: center;
+    }
+}
 
 .auth-form {
     margin-top: 40px;
