@@ -20,7 +20,7 @@ section {
     }
 }
 
-.auth-form {
+.form {
     margin-top: 40px;
 }
 
@@ -30,4 +30,11 @@ section {
 
 .__bar-is-vertical {
     background: transparent !important;
+}
+
+.circular-progress {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
