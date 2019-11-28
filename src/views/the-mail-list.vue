@@ -28,6 +28,14 @@
                 ></mail-item>
             </section>
         </pull-to>
+        <v-btn
+                class="fab-fixed"
+                color="accent"
+                fab
+                @click="createMail"
+        >
+            <v-icon>mdi-plus</v-icon>
+        </v-btn>
     </div>
 </template>
 
@@ -74,6 +82,10 @@
                 });
             },
 
+            createMail() {
+                this.$router.push('/mails/new');
+            },
+
             async loadMailList() {
                 this.loading = true;
                 try {
@@ -87,12 +99,9 @@
 </script>
 
 <style lang="scss" scoped>
-    .home {
-        .circular-progress {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+    .fab-fixed {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
     }
 </style>

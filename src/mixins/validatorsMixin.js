@@ -17,6 +17,16 @@ export default {
             required: [
                 v => !!v || 'Field is required',
             ],
+            mailStringValidation: [
+                v => !!v || 'Field is required',
+                v => v.length >= 3 || 'Value is too short',
+                v => v.length <= 20 || 'Value is too long'
+            ],
+            mailWeightValidation: [
+                v => !!v || 'Field is required',
+                v => v > 0 || 'Value should be numeric and positive!',
+                v => v <= 100 || 'Mail is too big!',
+            ]
         }
     }
 }

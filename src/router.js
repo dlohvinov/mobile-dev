@@ -5,6 +5,7 @@ import home from './views/the-home.vue';
 import login from './views/the-login.vue';
 import register from './views/the-register.vue';
 import mailList from './views/the-mail-list.vue';
+import mailNew from './views/mail-new.vue';
 import openedMail from './views/opened-mail-item.vue';
 import profile from './views/the-profile.vue';
 import unknown from './views/the-unknown.vue';
@@ -39,9 +40,9 @@ const router = new Router({
                     component: mailList,
                 },
                 {
-                    path: '/mails',
-                    name: 'mails',
-                    component: mailList,
+                    path: '/mails/new',
+                    name: 'new-mail',
+                    component: mailNew,
                 },
                 {
                     path: '/mails/:id',
