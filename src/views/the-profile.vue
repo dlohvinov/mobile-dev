@@ -15,6 +15,7 @@
                             class="pic__input"
                             type="file"
                             @input="uploadPic"
+                            accept="image/*"
                     >
                 </div>
             </div>
@@ -25,14 +26,12 @@
                         :rules="emailValidation"
                         label="email"
                         placeholder="email"
-                        solo
                 ></v-text-field>
                 <v-text-field
                         v-model="user.displayName"
                         :rules="required"
                         label="name"
                         placeholder="name"
-                        solo
                 ></v-text-field>
                 <v-card-actions>
                     <v-btn

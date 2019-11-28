@@ -23,8 +23,8 @@ export const getMail = async (id) => {
 };
 
 export const addMail = async (mail) => {
-    mail.weight = +mail.weight;
-    mail.post_office = 1;
+    // mail.weight = mail.weight;
+    mail.post_office = "1";
     try {
         const response = await axios.post(BASE_URL, mail);
         return response.data;

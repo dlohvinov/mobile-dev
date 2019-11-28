@@ -25,7 +25,6 @@
                         :rules="mailStringValidation"
                         label="Mail type"
                         placeholder="Mail type"
-                        solo
                 ></v-text-field>
                 <v-text-field
                         class="form__input"
@@ -33,7 +32,6 @@
                         :rules="mailStringValidation"
                         label="Sender"
                         placeholder="Sender"
-                        solo
                 ></v-text-field>
                 <v-text-field
                         class="form__input"
@@ -41,15 +39,13 @@
                         :rules="mailStringValidation"
                         label="Receiver"
                         placeholder="Receiver"
-                        solo
                 ></v-text-field>
                 <v-text-field
                         class="form__input"
                         v-model="form.weight"
                         :rules="mailWeightValidation"
-                        label="Weight"
-                        placeholder="Weight"
-                        solo
+                        label="Weight (kg)"
+                        placeholder="Weight (kg)"
                 ></v-text-field>
                 <v-btn
                         :disabled="!validation"
@@ -87,8 +83,7 @@
                 try {
                     await addMail(this.form);
                     await this.$router.push('/mails');
-                } catch {
-                }
+                } catch {}
                 this.loading = false;
             },
         },

@@ -28,6 +28,7 @@ export const updateUser = async (updUser) => {
             email: updUser.email,
             displayName: updUser.displayName,
         });
+        await currentUser.updateEmail(updUser.email);
     } catch (err) {
         eventBus.$emit('snack', 'Sorry, cant update user :(');
     }

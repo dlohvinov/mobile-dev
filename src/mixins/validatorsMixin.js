@@ -25,7 +25,7 @@ export default {
             mailWeightValidation: [
                 v => !!v || 'Field is required',
                 v => v > 0 || 'Value should be numeric and positive!',
-                v => v <= 100 || 'Mail is too big!',
+                v => v <= 30 || 'Package weight should be smaller than 30 kg!',
             ]
         }
     }
