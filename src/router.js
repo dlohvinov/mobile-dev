@@ -4,6 +4,10 @@ import Router from 'vue-router';
 import home from './views/the-home.vue';
 import login from './views/the-login.vue';
 import register from './views/the-register.vue';
+import mailList from './views/the-mail-list.vue';
+import openedMail from './views/opened-mail-item.vue';
+import profile from './views/the-profile.vue';
+import unknown from './views/the-unknown.vue';
 
 Vue.use(Router);
 
@@ -27,7 +31,34 @@ const router = new Router({
             component: home,
             meta: {
                 requiresAuth: true
-            }
+            },
+            children: [
+                {
+                    path: '/mails',
+                    name: 'mails',
+                    component: mailList,
+                },
+                {
+                    path: '/mails',
+                    name: 'mails',
+                    component: mailList,
+                },
+                {
+                    path: '/mails/:id',
+                    name: 'mail',
+                    component: openedMail,
+                },
+                {
+                    path: '/unknown',
+                    name: 'unknown',
+                    component: unknown,
+                },
+                {
+                    path: '/profile',
+                    name: 'profile',
+                    component: profile,
+                },
+            ]
         },
     ]
 });
